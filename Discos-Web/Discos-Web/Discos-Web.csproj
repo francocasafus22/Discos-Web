@@ -67,16 +67,56 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarDisco.aspx" />
+    <Content Include="DeatlleDisco.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ListaDiscos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarDisco.aspx.cs">
+      <DependentUpon>AgregarDisco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarDisco.aspx.designer.cs">
+      <DependentUpon>AgregarDisco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeatlleDisco.aspx.cs">
+      <DependentUpon>DeatlleDisco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeatlleDisco.aspx.designer.cs">
+      <DependentUpon>DeatlleDisco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListaDiscos.aspx.cs">
+      <DependentUpon>ListaDiscos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaDiscos.aspx.designer.cs">
+      <DependentUpon>ListaDiscos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -88,6 +128,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{fc3bec05-2ac6-42da-b25f-562d84f9802b}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tienda\tienda.csproj">
+      <Project>{dd3647c9-0031-433c-ba4e-9ad7f665e87f}</Project>
+      <Name>tienda</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

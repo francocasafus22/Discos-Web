@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discos-Web", "Discos-Web\Discos-Web.csproj", "{1F94C9B2-DB6E-43CD-A51F-35C99C82B7C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{FC3BEC05-2AC6-42DA-B25F-562D84F9802B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tienda", "tienda\tienda.csproj", "{DD3647C9-0031-433C-BA4E-9AD7F665E87F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1F94C9B2-DB6E-43CD-A51F-35C99C82B7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F94C9B2-DB6E-43CD-A51F-35C99C82B7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F94C9B2-DB6E-43CD-A51F-35C99C82B7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC3BEC05-2AC6-42DA-B25F-562D84F9802B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3BEC05-2AC6-42DA-B25F-562D84F9802B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3BEC05-2AC6-42DA-B25F-562D84F9802B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3BEC05-2AC6-42DA-B25F-562D84F9802B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD3647C9-0031-433C-BA4E-9AD7F665E87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD3647C9-0031-433C-BA4E-9AD7F665E87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD3647C9-0031-433C-BA4E-9AD7F665E87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD3647C9-0031-433C-BA4E-9AD7F665E87F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
