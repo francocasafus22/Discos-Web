@@ -23,14 +23,12 @@ namespace tienda
                 
                 if(filtro == "")
                 {
-                    datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa,ESTILOS.Descripcion as Estilo, ESTILOS.Id as ESTILO_ID, TIPOSEDICION.Id as TIPO_ID ,TIPOSEDICION.Descripcion as Tipo from DISCOS " +
-                    "INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id");
-                    //datos.setearProcedimiento("storedListar");
+                    datos.setearProcedimiento("storedListar");
                 }
                 else
                 {
-                    datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa, ESTILOS.Descripcion as Estilo, TIPOSEDICION.Descripcion as Tipo from DISCOS " +
-                    "INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id WHERE DISCOS.Titulo like @filtro;");
+                    datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa,ESTILOS.Descripcion as Estilo, ESTILOS.Id as ESTILO_ID, TIPOSEDICION.Id as TIPO_ID ,TIPOSEDICION.Descripcion as Tipo, DISCOS.Activo as Activo from DISCOS " +
+                    "INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id WHERE DISCOS.Titulo like @filtro and Activo = 1;");
                     datos.agregarParametro("@filtro", "%" + filtro + "%");
                 }
 
@@ -51,6 +49,7 @@ namespace tienda
                     aux.Tipo_Disco = new Tipo();
                     aux.Tipo_Disco.Descripcion = (string)datos.Lector["Tipo"];
                     aux.Tipo_Disco.Id = (int)datos.Lector["TIPO_ID"];
+                    aux.Estado = bool.Parse(datos.Lector["Activo"].ToString());
                     
                     list.Add(aux);
 
@@ -152,7 +151,7 @@ namespace tienda
 
             try
             {
-                datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa,ESTILOS.Descripcion as Estilo, ESTILOS.Id as ESTILO_ID, TIPOSEDICION.Id as TIPO_ID ,TIPOSEDICION.Descripcion as Tipo from DISCOS INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id WHERE DISCOS.Id LIKE @Id");
+                datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa,ESTILOS.Descripcion as Estilo, ESTILOS.Id as ESTILO_ID, TIPOSEDICION.Id as TIPO_ID ,TIPOSEDICION.Descripcion as Tipo, DISCOS.Activo as Activo from DISCOS INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id WHERE DISCOS.Id LIKE @Id");
                 datos.agregarParametro("@Id", id);
                 datos.ejecutarLectura();
 
@@ -169,9 +168,32 @@ namespace tienda
                     aux.Tipo_Disco = new Tipo();
                     aux.Tipo_Disco.Descripcion = (string)datos.Lector["Tipo"];
                     aux.Tipo_Disco.Id = (int)datos.Lector["TIPO_ID"];
+                    aux.Estado = bool.Parse(datos.Lector["Activo"].ToString());
                 }
 
                 return aux;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void EstadoDisco(string id, bool Estado = false)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("update DISCOS set Activo = @Estado where Id = @Id;");
+                datos.agregarParametro("@Estado", Estado);
+                datos.agregarParametro("@Id", id);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

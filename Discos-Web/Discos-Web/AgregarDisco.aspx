@@ -59,10 +59,11 @@
                         <div class="mb-3">
                             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn btn-dark" />
                             <asp:Button ID="btnBorrar" runat="server" Text="Borrar" CssClass="btn btn-danger" OnClick="btnBorrar_Click" />
+                            <asp:Button ID="btnInactivo" runat="server" Text="Inactivar" CssClass="btn btn-warning" OnClick="btnInactivo_Click" />
                             <%if (ConfirmarEliminacion)
                               { %>
                             <asp:CheckBox ID="cbConfirmar" runat="server" Text="Confirmar Eliminacion" />
-                            <asp:Button ID="btnBorrarConfirmado" runat="server" Text="Button" CssClass="btn btn-outline-danger" OnClick="btnBorrarConfirmado_Click"/>
+                            <asp:Button ID="btnBorrarConfirmado" runat="server" Text="Borrar" CssClass="btn btn-outline-danger" OnClick="btnBorrarConfirmado_Click"/>
                             <%} %>
                         </div>
                     </div>

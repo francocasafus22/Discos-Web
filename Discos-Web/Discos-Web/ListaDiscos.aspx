@@ -12,6 +12,7 @@
             <asp:BoundField HeaderText="Canciones" DataField="Cant_Canciones" />
             <asp:BoundField HeaderText="Estilo" DataField="Estilo_Disco.Descripcion" />
             <asp:BoundField HeaderText="Tipo" DataField="Tipo_Disco.Descripcion" />
+            <asp:CheckBoxField HeaderText="Estado" DataField="Estado" />
             <asp:CommandField ShowSelectButton="true" SelectText="✏️" HeaderText="Acción" />
         </Columns>
     </asp:GridView>

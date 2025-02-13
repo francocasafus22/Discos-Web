@@ -41,6 +41,7 @@ namespace Discos_Web
                     {
                         DiscoTienda negocio = new DiscoTienda();
                         Disco disco = negocio.listarConId(id);
+                        Session.Add("Seleccionado", disco);
 
                         txtTitulo.Text = disco.Titulo;
                         txtId.Text = disco.Id.ToString();
@@ -51,10 +52,14 @@ namespace Discos_Web
                         ddlEstilo.SelectedValue = disco.Estilo_Disco.Id.ToString();
                         ddlTipo.SelectedValue = disco.Tipo_Disco.Id.ToString();
                         img_Disco.ImageUrl = txtImagen.Text;
+                        if (!disco.Estado)
+                            btnInactivo.Text = "Activar";
                     }
                     else
                     {
                         lblTitulo.Text = "Agregar";
+                        btnBorrar.Enabled = false;
+                        btnInactivo.Enabled = false;
                     }
 
                 }
@@ -125,6 +130,24 @@ namespace Discos_Web
                 string id = txtId.Text;
                 tienda.borrar(id);
                 Response.Redirect("ListaDiscos.aspx", false);
+            }
+        }
+
+        protected void btnInactivo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DiscoTienda tienda = new DiscoTienda();
+                Disco seleccionado = (Disco)Session["Seleccionado"];
+
+                tienda.EstadoDisco(txtId.Text, !seleccionado.Estado);
+                
+                Response.Redirect("ListaDiscos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex);
             }
         }
     }

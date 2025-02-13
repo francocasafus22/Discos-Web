@@ -16,6 +16,7 @@ namespace dominio
         public string Url_Imagen { get; set; }
         public Estilo Estilo_Disco { get; set; }
         public Tipo Tipo_Disco { get; set; }
+        public bool Estado { get; set; }
 
     }
 }
