@@ -13,6 +13,12 @@ namespace Discos_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!UsuarioTienda.IsAdmin((Usuario)Session["usuario"]))
+            {
+                Session.Add("error", "No tiene permisos para acceder a esta página");
+                Response.Redirect("Error.aspx", false);
+            }
+
             txtBuscar.Enabled = !cbAvanzado.Checked;
 
             if (!IsPostBack)
@@ -22,8 +28,6 @@ namespace Discos_Web
                 dgvDiscos.DataSource = Session["listaDiscos"];
                 dgvDiscos.DataBind();
             }
-            
-            
         }
 
         protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,14 +45,14 @@ namespace Discos_Web
 
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            List<Disco> listaFiltrada = ((List<Disco>)Session["listaDiscos"]).FindAll(x=>x.Titulo.ToUpper().Contains(txtBuscar.Text.ToUpper()));
+            List<Disco> listaFiltrada = ((List<Disco>)Session["listaDiscos"]).FindAll(x => x.Titulo.ToUpper().Contains(txtBuscar.Text.ToUpper()));
             dgvDiscos.DataSource = listaFiltrada;
             dgvDiscos.DataBind();
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
             switch (ddlCampo.SelectedIndex)
             {
                 case 0: //Titulo
@@ -99,7 +103,8 @@ namespace Discos_Web
             {
                 dgvDiscos.DataSource = Session["listaDiscos"];
                 dgvDiscos.DataBind();
-            }                            
+            }
         }
+
     }
 }

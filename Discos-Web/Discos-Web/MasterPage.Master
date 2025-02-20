@@ -27,10 +27,10 @@
                                 <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ListaDiscos.aspx">Lista Discos</a>
+                                <asp:HyperLink ID="hyperLista" runat="server" CssClass="nav-link" NavigateUrl="~/ListaDiscos.aspx">Lista Discos</asp:HyperLink>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
+                                <a class="nav-link" href="Login.aspx">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>

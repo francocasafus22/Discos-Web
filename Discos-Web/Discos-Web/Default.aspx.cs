@@ -18,6 +18,16 @@ namespace Discos_Web
             DiscoTienda negocio = new DiscoTienda();
             listaDiscos = negocio.listar("");
 
+            if(Session["usuario"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta página");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                lblSaludo.Text = "Bienvenido " + usuario.User;
+            }
         }
 
     }
