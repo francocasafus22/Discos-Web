@@ -22,19 +22,5 @@ namespace dominio
         public string Mail { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
 
-        public Usuario(string user, string pass, bool admin) 
-        {
-            User = user;
-            Pass = pass;
-            TipoUsuario = admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
-        }
-
-        public Usuario(string user, string pass, string mail)
-        {
-            User = user;
-            Pass = pass;
-            Mail = mail;
-            TipoUsuario = TipoUsuario.NORMAL;
-        }
     }
 }

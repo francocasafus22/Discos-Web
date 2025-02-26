@@ -20,7 +20,7 @@ namespace Discos_Web
 
             if(Session["usuario"] == null)
             {
-                Response.Redirect("Login.aspx", false);
+                lblSaludo.Text = "¡Puedes Logearte para añadir discos a favoritos!";
             }
             else
             {

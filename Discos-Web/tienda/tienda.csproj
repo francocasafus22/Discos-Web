@@ -51,6 +51,7 @@
     <Compile Include="EmailService.cs" />
     <Compile Include="EstiloTienda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="TipoTienda.cs" />
     <Compile Include="UsuarioTienda.cs" />
   </ItemGroup>

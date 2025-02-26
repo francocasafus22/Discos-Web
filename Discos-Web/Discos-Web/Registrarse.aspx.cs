@@ -20,15 +20,24 @@ namespace Discos_Web
         {
             UsuarioTienda tienda = new UsuarioTienda();
             Usuario usuario;
+            EmailService emailService = new EmailService();
             try
             {
-                usuario = new Usuario(txtUser.Text, txtPassword.Text, txtMail.Text);
-                tienda.Registrar(usuario);
+                usuario = new Usuario();
+                usuario.User = txtUser.Text;
+                usuario.Pass = txtPassword.Text;
+                usuario.Mail = txtMail.Text;
+
+                int id = tienda.Registrar(usuario);
+
+                emailService.armarCorreo(usuario.Mail, "Registro exitoso", "Bienvenido a Discos Web, su usuario es: " + usuario.User);
+                emailService.enviarCorreo();
+
                 Response.Redirect("Login.aspx", false);
             }
             catch (Exception ex)
             {
-                Session.Add("error", "No se ha podido registrar, vuelva a internarlo.");
+                Session.Add("error", ex.Message);
                 Response.Redirect("Error.aspx", false);
             }
         }

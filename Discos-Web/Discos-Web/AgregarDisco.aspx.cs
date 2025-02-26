@@ -17,6 +17,12 @@ namespace Discos_Web
         {
             ConfirmarEliminacion = false;
 
+            if (!Seguridad.IsAdmin((Usuario)Session["usuario"]))
+            {
+                Session.Add("error", "No tiene permisos para acceder a esta página");
+                Response.Redirect("Error.aspx", false);
+            }
+
             try
             {
                 if (!IsPostBack)

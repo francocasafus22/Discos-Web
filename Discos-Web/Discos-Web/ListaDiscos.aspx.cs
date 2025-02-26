@@ -13,7 +13,7 @@ namespace Discos_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!UsuarioTienda.IsAdmin((Usuario)Session["usuario"]))
+            if (!Seguridad.IsAdmin((Usuario)Session["usuario"]))
             {
                 Session.Add("error", "No tiene permisos para acceder a esta página");
                 Response.Redirect("Error.aspx", false);

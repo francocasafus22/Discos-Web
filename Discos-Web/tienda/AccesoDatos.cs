@@ -77,6 +77,24 @@ namespace tienda
             }
 
         }
+
+        public int ejecutarScale()
+        {
+
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public void agregarParametro(string nombre, object valor)
         {
             if (valor == null)

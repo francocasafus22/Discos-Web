@@ -14,6 +14,12 @@ namespace Discos_Web
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if(!(Page is Login) && !(Page is Registrarse) && !(Page is Error) && !(Page is Default))
+            {
+                if (!(Seguridad.SesionActiva(Session["usuario"])))
+                    Response.Redirect("Login.aspx", false);
+            }
+
             if (Session["usuario"] != null)
             {
                 hyperLinkLogin.Visible = false;
@@ -27,7 +33,7 @@ namespace Discos_Web
                 btnCerrarSesion.Visible = false;
             }
 
-           if (UsuarioTienda.IsAdmin((Usuario)Session["usuario"]))
+           if (Seguridad.IsAdmin((Usuario)Session["usuario"]))
             {
                 hyperLista.Visible = true;
             }

@@ -26,10 +26,12 @@ namespace Discos_Web
             Usuario usuario;
             try
             {
-                usuario = new Usuario(txtUser.Text, txtPassword.Text, false);
-                if(tienda.Login(usuario))
+                usuario = new Usuario();
+                usuario.User = txtUser.Text;
+                usuario.Pass = txtPassword.Text;
+                if (tienda.Login(usuario))
                 {
-                    Session["usuario"] = tienda.ObtenerUsuario(usuario);                   
+                    Session["usuario"] = usuario;                   
                     Response.Redirect("Default.aspx", false);
                 }
                 else
