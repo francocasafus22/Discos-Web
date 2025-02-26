@@ -21,7 +21,7 @@ namespace tienda
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=DESKTOP-GHSCFC0; database=DISCOS_DB; integrated security=false; user=sa; password=2005");
+            conexion = new SqlConnection("Server=DESKTOP-VN13RKL\\SQLEXPRESS;Database=DISCOS_DB;Trusted_Connection=True;");
             comando = new SqlCommand();
         }
 

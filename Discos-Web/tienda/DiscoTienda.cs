@@ -24,7 +24,8 @@ namespace tienda
                 
                 if(filtro == "")
                 {
-                    datos.setearProcedimiento("storedListar");
+                    datos.setConsulta("Select DISCOS.Id, Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa,ESTILOS.Descripcion as Estilo, ESTILOS.Id as ESTILO_ID, TIPOSEDICION.Id as TIPO_ID ,TIPOSEDICION.Descripcion as Tipo, DISCOS.Activo as Activo from DISCOS " +
+                     "INNER JOIN ESTILOS ON DISCOS.IdEstilo = ESTILOS.Id INNER JOIN TIPOSEDICION ON DISCOS.IdTipoEdicion = TIPOSEDICION.Id;");
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace tienda
 
             try
             {
-                datos.setearProcedimiento("storedAltaDisco");
+                datos.setConsulta("INSERT INTO Discos (Titulo, FechaLanzamiento, CantidadCanciones, UrlImagenTapa, IdEstilo, IdTipoEdicion, Activo) VALUES (@Titulo, @Fecha, @cant_canciones, @Imagen, @Estilo, @Tipo, @Activo)");
 
                 datos.agregarParametro("@Titulo", nuevo.Titulo);
                 datos.agregarParametro("@Fecha", nuevo.Fecha);
@@ -122,7 +123,7 @@ namespace tienda
 
             try
             {
-                datos.setearProcedimiento("storedModificarDisco");
+                datos.setConsulta("UPDATE [dbo].[DISCOS] SET [Titulo] = @Titulo, [FechaLanzamiento] = @Fecha, [CantidadCanciones] = @Canciones, [UrlImagenTapa] = @Imagen, [IdEstilo] = @Estilo, [IdTipoEdicion] = @Tipo WHERE [Id] = @ID");
                 
                 datos.agregarParametro("@Titulo", disco.Titulo);
                 datos.agregarParametro("@Fecha", disco.Fecha);
