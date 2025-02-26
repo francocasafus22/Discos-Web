@@ -19,6 +19,7 @@ namespace dominio
         public int Id { get; set; }
         public string User { get; set; }
         public string Pass { get; set; }
+        public string Mail { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
 
         public Usuario(string user, string pass, bool admin) 
@@ -26,6 +27,14 @@ namespace dominio
             User = user;
             Pass = pass;
             TipoUsuario = admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+        }
+
+        public Usuario(string user, string pass, string mail)
+        {
+            User = user;
+            Pass = pass;
+            Mail = mail;
+            TipoUsuario = TipoUsuario.NORMAL;
         }
     }
 }

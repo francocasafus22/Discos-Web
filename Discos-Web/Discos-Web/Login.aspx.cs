@@ -29,7 +29,7 @@ namespace Discos_Web
                 usuario = new Usuario(txtUser.Text, txtPassword.Text, false);
                 if(tienda.Login(usuario))
                 {
-                    Session["usuario"] = usuario;
+                    Session["usuario"] = tienda.ObtenerUsuario(usuario);                   
                     Response.Redirect("Default.aspx", false);
                 }
                 else

@@ -20,8 +20,7 @@ namespace Discos_Web
 
             if(Session["usuario"] == null)
             {
-                Session.Add("error", "Debe loguearse para acceder a esta página");
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Login.aspx", false);
             }
             else
             {
