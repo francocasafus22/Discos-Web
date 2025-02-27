@@ -20,7 +20,7 @@ namespace Discos_Web
                     Response.Redirect("Login.aspx", false);
             }
 
-            if (Session["usuario"] != null)
+            if (Seguridad.SesionActiva(Session["usuario"]))
             {
                 hyperLinkLogin.Visible = false;
                 hyperLinkRegistrar.Visible = false;
@@ -45,7 +45,7 @@ namespace Discos_Web
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Session.Remove("usuario");
+            Session.Clear();
             Response.Redirect("Default.aspx", false);
         }
     }

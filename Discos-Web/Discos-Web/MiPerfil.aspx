@@ -6,23 +6,51 @@
 
     <%if (Session["usuario"] != null)
         {%>
-    <div class="card mx-auto" style="width: 18rem;">
-        <img src="https://as1.ftcdn.net/v2/jpg/09/90/23/86/1000_F_990238695_EdYzCxmjhLK5dIV9zh81jX8pzVZIY4pK.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><%:User1.User%></h5>
+    <h1 class="text-center">Mi Perfil</h1>
+    <div class="row align-items-center">
+        <!-- Columna de la imagen -->
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="formPerfil" class="form-label">Imagen Perfil</label>
+                <input class="form-control" type="file" id="formPerfil">
+            </div>
+            <div class="mb-3 text-center">
+                <img src="https://placehold.org/500x500/FF0000/FFFFFF?text=Hola+Mundo" class="img-fluid rounded" alt="Imagen">
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%: "Mail: " + User1.Mail %></li>
-            <li class="list-group-item"><%: "Tipo Usuario: "  + User1.TipoUsuario%></li>
-        </ul>
-        <div class="card-body">
-            <p class="card-text"><small class="text-body-secondary"><%: "Fecha Creación: " + "01-01-2001" %></small></p>
+
+        <!-- Columna del formulario -->
+        <div class="col-md-8">
+            <div>
+                <div class="mb-3">
+                    <label for="txtMail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="txtMail" placeholder="Ingrese su correo">
+                </div>
+                <div class="mb-3">
+                    <label for="txtNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="txtApellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="txtApellido" placeholder="Ingrese su apellido">
+                </div>
+                <div class="mb-3">
+                    <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="txtFechaNacimiento" placeholder="Ingrese su fecha de nacimiento">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
         </div>
     </div>
+
+
     <%}
         else
         { %>
     <h1>No hay un usuario logueado.</h1>
     <%} %>
-
 </asp:Content>

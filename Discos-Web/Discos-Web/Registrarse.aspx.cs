@@ -33,7 +33,18 @@ namespace Discos_Web
                 emailService.armarCorreo(usuario.Mail, "Registro exitoso", "Bienvenido a Discos Web, su usuario es: " + usuario.User);
                 emailService.enviarCorreo();
 
-                Response.Redirect("Login.aspx", false);
+                if (tienda.Login(usuario))
+                {
+                    Session["usuario"] = usuario;
+                    Response.Redirect("Default.aspx", false);
+                }
+                else
+                {
+                    Session.Add("error", "Error al iniciar sesión, vuelva a intentarlo.");
+                    Response.Redirect("Error.aspx", false);
+                }
+
+                Response.Redirect("Default.aspx", false);
             }
             catch (Exception ex)
             {
