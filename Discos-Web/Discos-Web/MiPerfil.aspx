@@ -12,10 +12,10 @@
         <div class="col-md-4">
             <div class="mb-3">
                 <label for="formPerfil" class="form-label">Imagen Perfil</label>
-                <input class="form-control" type="file" id="formPerfil">
+                <input class="form-control" type="file" id="txtPerfil" runat="server">
             </div>
             <div class="mb-3 text-center">
-                <img src="https://placehold.org/500x500/FF0000/FFFFFF?text=Hola+Mundo" class="img-fluid rounded" alt="Imagen">
+                <asp:Image ID="NewProfileImage" runat="server" CssClass="img-fluid rounded" ImageUrl="https://placehold.org/500x500/FF0000/FFFFFF?text=Hola+Mundo"/>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-dark" OnClick="btnGuardar_Click"/>
             </div>
         </div>
     </div>

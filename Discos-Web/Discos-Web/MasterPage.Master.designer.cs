@@ -42,6 +42,15 @@ namespace Discos_Web
         protected global::System.Web.UI.WebControls.HyperLink hyperLista;
 
         /// <summary>
+        /// Control HyperLinkMyProfile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkMyProfile;
+
+        /// <summary>
         /// Control hyperLinkLogin.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Discos_Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
+
+        /// <summary>
+        /// Control ProfileImage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ProfileImage;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

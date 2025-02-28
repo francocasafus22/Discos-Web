@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark"  data-bs-theme="dark">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Navbar</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,17 +26,21 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                             </li>
-                            <li class="nav-item">                                
+                            <li class="nav-item">
                                 <asp:HyperLink ID="hyperLista" runat="server" CssClass="nav-link" NavigateUrl="ListaDiscos.aspx">Lista Discos</asp:HyperLink>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                             </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="HyperLinkMyProfile" runat="server" CssClass="nav-link" NavigateUrl="MiPerfil.aspx">Mi Perfil</asp:HyperLink>
+                            </li>
                         </ul>
-                        <div class="d-flex" role="search">                          
+                        <div class="d-flex" role="search">
                             <asp:HyperLink ID="hyperLinkLogin" runat="server" CssClass="btn btn-outline-light me-3" NavigateUrl="Login.aspx">Iniciar Sesion</asp:HyperLink>
                             <asp:HyperLink ID="hyperLinkRegistrar" runat="server" CssClass="btn btn-outline-light" NavigateUrl="Registrarse.aspx">Registrarse</asp:HyperLink>
-                            <asp:Button Text="Cerrar Sesion" runat="server" ID="btnCerrarSesion" CssClass="btn btn-outline-danger" OnClick="btnCerrarSesion_Click"/>
+                            <asp:Button Text="Cerrar Sesion" runat="server" ID="btnCerrarSesion" CssClass="btn btn-outline-danger" OnClick="btnCerrarSesion_Click" />
+                            <asp:Image ID="ProfileImage" Style="height: 50px; width: 50px; border-radius: 50%; margin-left: 5px" runat="server" />
                         </div>
                     </div>
                 </div>
