@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <%if (Session["usuario"] != null)
+    <%if (tienda.Seguridad.SesionActiva(Session["usuario"]))
         {%>
     <h1 class="text-center">Mi Perfil</h1>
     <div class="row align-items-center">
@@ -15,7 +15,7 @@
                 <input class="form-control" type="file" id="txtPerfil" runat="server">
             </div>
             <div class="mb-3 text-center">
-                <asp:Image ID="NewProfileImage" runat="server" CssClass="img-fluid rounded" ImageUrl="https://placehold.org/500x500/FF0000/FFFFFF?text=Hola+Mundo"/>
+                <asp:Image ID="NewProfileImage" runat="server" CssClass="img-fluid rounded"/>
             </div>
         </div>
 
@@ -23,26 +23,23 @@
         <div class="col-md-8">
             <div>
                 <div class="mb-3">
-                    <label for="txtMail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="txtMail" placeholder="Ingrese su correo">
+                    <label for="txtMail" class="form-label">Email</label>                    
+                    <asp:TextBox CssClass="form-control" ID="txtMail" runat="server" Enabled="false"></asp:TextBox>
                 </div>
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
+                    <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server"></asp:TextBox>
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" id="txtApellido" placeholder="Ingrese su apellido">
+                    <asp:TextBox CssClass="form-control" ID="txtApellido" runat="server"></asp:TextBox>
                 </div>
                 <div class="mb-3">
-                    <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="txtFechaNacimiento" placeholder="Ingrese su fecha de nacimiento">
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                    <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>                    
+                    <asp:TextBox CssClass="form-control" ID="txtFechaNacimiento" runat="server" TextMode="Date"></asp:TextBox>
                 </div>
                 <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-dark" OnClick="btnGuardar_Click"/>
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-dark"/>
             </div>
         </div>
     </div>

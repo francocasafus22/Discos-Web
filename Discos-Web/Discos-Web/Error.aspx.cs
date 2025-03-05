@@ -23,7 +23,7 @@ namespace Discos_Web
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }

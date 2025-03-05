@@ -11,19 +11,27 @@ namespace Discos_Web
 {
     public partial class MiPerfil : System.Web.UI.Page
     {
-        public Usuario User1 { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
+            if (!IsPostBack)
             {
-                User1 = (Usuario)Session["usuario"];
-                if (User1.ImagenURL != null)
+                if (Seguridad.SesionActiva(Session["usuario"]))
                 {
-                    NewProfileImage.ImageUrl = "./Images/Profile/" + User1.ImagenURL;
-                }
-                else
-                {
-                    NewProfileImage.ImageUrl = "./Images/Profile/DefaultProfileImage.jpg";
+                    Usuario user = (Usuario)Session["usuario"];
+
+                    txtApellido.Text = user.Apellido;
+                    txtNombre.Text = user.Nombre;
+                    txtMail.Text = user.Mail;
+                    txtFechaNacimiento.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
+
+                    if (user.ImagenURL != null)
+                    {
+                        NewProfileImage.ImageUrl = "./Images/Profile/" + user.ImagenURL;
+                    }
+                    else
+                    {
+                        NewProfileImage.ImageUrl = "./Images/Profile/DefaultProfileImage.jpg";
+                    }
                 }
             }
 
@@ -35,13 +43,28 @@ namespace Discos_Web
             {
                 //Leer los datos del usuario
                 UsuarioTienda tienda = new UsuarioTienda();
-                string ruta = Server.MapPath("./Images/Profile/");
                 Usuario user = (Usuario)Session["usuario"];
-                txtPerfil.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg"); //Tomar la imagen ingresada y guardarla en la carpeta de imagenes
 
-                //Actualizar la URL de la imagen en la base de datos
-                user.ImagenURL = "perfil-" + user.Id + ".jpg";
-                tienda.ActualizarImagen(user);
+                if(txtPerfil.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Images/Profile/");
+                    txtPerfil.PostedFile.SaveAs(ruta + "perfil-" + user.Id + ".jpg"); //Tomar la imagen ingresada y guardarla en la carpeta de imagenes
+                    user.ImagenURL = "perfil-" + user.Id + ".jpg";  // Añadir la imagen al usuario
+                }
+                  
+                user.Nombre = txtNombre.Text;
+                user.Apellido = txtApellido.Text;
+                user.Mail = txtMail.Text;
+
+                if (DateTime.Parse(txtFechaNacimiento.Text) == DateTime.MinValue) { }
+                else if (DateTime.Parse(txtFechaNacimiento.Text) < new DateTime(1753, 1, 1))
+                {
+                    throw new Exception("La fecha debe ser igual o mayor a 01/01/1753.");
+                }
+
+                user.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+
+                tienda.ActualizarDatos(user);
                 Session["usuario"] = user;
 
                 Response.Redirect("Default.aspx", false);
@@ -50,6 +73,7 @@ namespace Discos_Web
             {
 
                 Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }
