@@ -35,7 +35,7 @@ namespace tienda
         public bool Login(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
-
+            
             try
             {
 
