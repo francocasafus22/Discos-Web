@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="Discos_Web.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -29,10 +35,12 @@
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
                     <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ErrorMessage="Nombre requerido" ControlToValidate="txtNombre" runat="server" CssClass="validacion"/>
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
                     <asp:TextBox CssClass="form-control" ID="txtApellido" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ErrorMessage="Apellido requerido" ControlToValidate="txtApellido" runat="server" CssClass="validacion"/>
                 </div>
                 <div class="mb-3">
                     <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>                    

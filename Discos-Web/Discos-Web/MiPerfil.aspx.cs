@@ -41,6 +41,10 @@ namespace Discos_Web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 //Leer los datos del usuario
                 UsuarioTienda tienda = new UsuarioTienda();
                 Usuario user = (Usuario)Session["usuario"];

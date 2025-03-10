@@ -27,8 +27,15 @@ namespace Discos_Web
             try
             {
                 usuario = new Usuario();
+
+                if(Validacion.textoVacio(txtUser) || Validacion.textoVacio(txtPassword))
+                {
+                   throw new Exception("Debe completar ambos campos");
+                }
+
                 usuario.User = txtUser.Text;
                 usuario.Pass = txtPassword.Text;
+
                 if (tienda.Login(usuario))
                 {
                     Session["usuario"] = usuario;                   
