@@ -14,7 +14,7 @@ namespace Discos_Web
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if(!(Page is Login || Page is Registrarse || Page is Error || Page is Default))
+            if(!(Page is Login || Page is Registrarse || Page is Error || Page is Default || Page is DeatlleDisco))
             {
                 if (!(Seguridad.SesionActiva(Session["usuario"])))
                     Response.Redirect("Login.aspx", false);
