@@ -7,6 +7,22 @@
             font-size: 12px;
         }
     </style>
+    <script>    
+        function validar() {
+            var txtNombre = document.getElementById("txtNombre");
+            var txtApellido = document.getElementById("txtApellido");
+            var txtFechaNacimiento = document.getElementById("txtFechaNacimiento");
+
+            if (txtApellido.value == "") {
+                txtApellido.classList.add("is-invalid");
+                txtApellido.classList.remove("is-valid");
+                
+                return false;
+            } 
+
+            return true;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -34,21 +50,21 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
-                    <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ClientIDMode="Static" ID="txtNombre" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ErrorMessage="Nombre requerido" ControlToValidate="txtNombre" runat="server" CssClass="validacion" />
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
-                    <asp:TextBox CssClass="form-control" ID="txtApellido" runat="server"></asp:TextBox>
-                    <asp:RegularExpressionValidator ErrorMessage="Solo se permiten números" ValidationExpression="^\d+$" ControlToValidate="txtApellido" runat="server" />
+                    <asp:TextBox CssClass="form-control" ID="txtApellido" ClientIDMode="Static" runat="server"></asp:TextBox>
+                    <%--<asp:RegularExpressionValidator ErrorMessage="Solo se permiten números" ValidationExpression="^\d+$" ControlToValidate="txtApellido" runat="server" />--%>
                     <%--<asp:RangeValidator ErrorMessage="Fuera de rango..." ControlToValidate="txtApellido" MinimumValue="1" Type="" MaximumValue="50" runat="server" CssClass="validacion" />--%>
                     <%--<asp:RequiredFieldValidator ErrorMessage="Apellido requerido" ControlToValidate="txtApellido" runat="server" CssClass="validacion" />--%>
                 </div>
                 <div class="mb-3">
                     <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                    <asp:TextBox CssClass="form-control" ID="txtFechaNacimiento" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="txtFechaNacimiento" ClientIDMode="Static" runat="server" TextMode="Date"></asp:TextBox>
                 </div>
-                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-dark" OnClick="btnGuardar_Click" />
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-dark" OnClientClick="return validar()" OnClick="btnGuardar_Click" />
                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-dark" />
             </div>
         </div>
